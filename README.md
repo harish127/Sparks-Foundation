@@ -1,1 +1,9 @@
-# This is a readme file
+# Sparks Foundation - Basic Banking System
+
+## Index
+- Description
+- First Time Installation
+- Screenshort
+
+## Description
+- 
