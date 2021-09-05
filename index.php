@@ -58,7 +58,7 @@
         <!-- middle container start-->
         <div class="container my-5">
             <h1 class="text-dark">View all Customers</h1>
-            <a href="customer.html"><button class="btn btn-primary" type="button" >Get Started</button></a>
+            <a href="customer.php"><button class="btn btn-primary" type="button" >Get Started</button></a>
         </div>
         <!-- middle container end -->
 
