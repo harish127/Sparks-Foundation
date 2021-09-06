@@ -23,7 +23,7 @@
 
       <!-- table starts -->
         <div class="container my-5">
-            <h3 class="text-dark">Customers Deatils</h3>
+            <h3 class="text-dark">Customers Details</h3>
             <div class="container my-3">
             <table class="table table-hover">
                 <thead>
@@ -47,8 +47,8 @@
                     <td>".$row['Name']."</td>
                     <td>".$row['Email']."</td>
                     <td>".$row['Amount']."</td>
-                    <td><a href='#'><button type='button' class='btn btn-success btn-sm'>View</button></a></td>
-                    <td><a href='#'><button type='button' class='btn btn-success btn-sm'>Send</button></a></td>
+                    <td><a href='transection.php?name=".$row['Name']."'><button type='button' class='btn btn-success btn-sm'>View</button></a></td>
+                    <td><a href='send.php?name=".$row['Name']."'><button type='button' class='btn btn-success btn-sm'>Send</button></a></td>
                   </tr>";
 
                     }
