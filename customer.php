@@ -37,6 +37,8 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                <!-- fetching data from table -->
                 <?php 
                   if($num_of_entry>0){
                     while($row = mysqli_fetch_assoc($result)){
@@ -45,10 +47,13 @@
                     <td>".$row['Name']."</td>
                     <td>".$row['Email']."</td>
                     <td>".$row['Amount']."</td>
+                    <td><a href='#'><button type='button' class='btn btn-success btn-sm'>View</button></a></td>
                     <td><a href='#'><button type='button' class='btn btn-success btn-sm'>Send</button></a></td>
                   </tr>";
 
                     }
+                  }else{
+                    echo "<h2>No data found in table</h2>";
                   }
                 ?>
                 </tbody>
