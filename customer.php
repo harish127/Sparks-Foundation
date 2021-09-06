@@ -11,8 +11,17 @@
 </head>
 <body>
 
-<?php require_once './include/header.php' ?>
+    <!-- header with connection and sql code -->
+<?php require_once './include/header.php';
+    require 'connection.php';
 
+    $sql = "SELECT * FROM `customers`";
+
+    $result = mysqli_query($conn,$sql);
+    $num_of_entry = mysqli_num_rows($result);
+?>
+
+      <!-- table starts -->
         <div class="container my-5">
             <h3 class="text-dark">Customers Deatils</h3>
             <div class="container my-3">
@@ -23,35 +32,35 @@
                     <th scope="col">Name</th>
                     <th scope="col">E-Mail</th>
                     <th scope="col">Current Balance</th>
+                    <th scope="col">Transaction</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td><a href="#"><button type="button" class="btn btn-success btn-sm">Send</button></a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                <?php 
+                  if($num_of_entry>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                      echo "<tr>
+                    <th scope='row'>".$row['Cust_ID']."</th>
+                    <td>".$row['Name']."</td>
+                    <td>".$row['Email']."</td>
+                    <td>".$row['Amount']."</td>
+                    <td><a href='#'><button type='button' class='btn btn-success btn-sm'>Send</button></a></td>
+                  </tr>";
+
+                    }
+                  }
+                ?>
                 </tbody>
               </table>
               </div>
         </div>
+          <!-- table ends -->
 
+          <!-- footer  -->
         <?php require_once './include/footer.php' ?>
     
 </body>
+   <!-- bootstrap js script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </html>
