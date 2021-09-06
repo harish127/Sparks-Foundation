@@ -11,10 +11,11 @@
 </head>
 <body>
 
+  <!-- header with connection and sql code -->
   <?php require_once './include/header.php' ?>
 
 
-      <!-- CArosoul part start -->
+      <!-- Carosoul part start -->
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -62,8 +63,10 @@
         </div>
         <!-- middle container end -->
 
-
+         <!-- footer  -->
         <?php require_once './include/footer.php' ?>  
 </body>
+
+      <!-- bootstrap js script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </html>
