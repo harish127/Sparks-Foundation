@@ -1,12 +1,13 @@
 # Sparks Foundation - Basic Banking System
 
 ## Index
-- Description
+- [Description](#Description)
 - First Time Installation
 - Screenshort
 
 ## Description
-- 
+- This a Internship project by Sparks Foundation.
+- This project is built on HTML/CSS, Bootstrap, PHP and MySQL.
 
 ## First Time Installation
 - Clone the Repository.
