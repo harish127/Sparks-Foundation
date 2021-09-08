@@ -11,53 +11,67 @@ if(!$conn){
 }
 
 function check_name($from,$to,$amount){
+  
+    // database parameters
+    const $user       = 'root';
+    const $password   = '';
+    const $dns ='mysql:host=localhost;dbname=bank';
+    // transaction process starts
+    try {
+        //PHP data object is created 
+        $db = new PDO($dns, $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->begintransaction();
 
-    try{
-    // $db_name = 'mysql:host=localhost;dbname=bank';
-    // $conn = new PDO($db_name,'root','');
-    // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // $conn->beginTransaction();
-    // // $sql1 = $conn->prepare("UPDATE customers SET Amount = Amount - ? WHERE Name = ?");
-    // $sql1 = $conn->prepare("UPDATE `customers` SET `Amount`= `Amount`+ :amt WHERE `Name` = :fr");
-    // $sql2 = $conn->prepare("UPDATE customers SET Amount = Amount + ? WHERE Name = ?");
-    // $sql1->execute(array(':amt'=>(float)$amount,'fr'=>$from));
-    // $sql2->execute([(float)$amount,$to]);
+        // checking for sufficient for transaction 
+        $sql = 'SELECT amount FROM customers WHERE Name=:from';
+        $stmt = $db->prepare($sql);
+        $stmt->execute(array(":from" => $from));
+        $availableAmount = (int) $stmt->fetchColumn();
+        $stmt->closeCursor();
 
-    $mysqli = new mysqli("localhost", "root", "", "bank");
-    $mysqli->set_charset("utf8mb4");
-    $mysqli->autocommit(FALSE);
-    $stmt = $mysqli->prepare("UPDATE customers SET Amount = Amount + 500 ");
-// $stmt->bind_param('s', $to);
-$amount = (float)$amount;
-var_dump($stmt->execute());
-$stmt->close();
+        if ($availableAmount < $amount) {
+            throw new Exception('Insufficient amount to transfer');
+        }
+        
+        //Preparing SQL statements for transaction
+        $st1 = $db->prepare(
+            "update customers set
+            `Amount`= Amount - :amt where Name = :fro "
+        );
+        $st2 = $db->prepare(
+            "update customers set
+            `Amount`= Amount + :amt where Name = :to "
+        );
+        
+        //Assigning values to placeholder
+        $st1->bindValue(':amt', $amount, PDO::PARAM_INT);
+        $st1->bindValue(':fro', $from, PDO::PARAM_STR);
+        $st2->bindValue(':amt', $amount, PDO::PARAM_INT);
+        $st2->bindValue(':to', $to, PDO::PARAM_STR);
+        //Excecuting the SQL Queries
+        $st1->execute();
+        $st2->execute();
 
-            echo "<h1>sucessfully</h1>";
-            var_dump((float)$amount);
-
-
-    }
-    catch(Exception $e){
-        $con1->rollback();
+        //Checking if user name Exits
+        if(!$st2->rowCount()||!$st1->rowCount()){ 
+            throw new Exception('User not Found!');
+        }
+        
+        //Everything is fine so Commit the changes
+        if($db->commit()) 
+            echo "Transaction succesfull";
+        else 
+            echo "Transection failed";
+        
+    } catch (PDOException $e) { //PDO related Exceptions are handle here
         echo $e->getMessage();
+    }catch(Exception $e){   //Custom Exceptions are handle here
+        echo $e->getMessage();
+        $db->rollBack();   //Reverting changes if any
     }
 }
 
-// try {
-//     $mysqli->autocommit(FALSE); //turn on transactions
-//     $stmt1 = $mysqli->prepare("INSERT INTO myTable (name, age) VALUES (?, ?)");
-//     $stmt2 = $mysqli->prepare("UPDATE myTable SET name = ? WHERE id = ?");
-//     $stmt1->bind_param("si", $_POST['name'], $_POST['age']);
-//     $stmt2->bind_param("si", $_POST['name'], $_SESSION['id']);
-//     $stmt1->execute();
-//     $stmt2->execute();
-//     $stmt1->close();
-//     $stmt2->close();
-//     $mysqli->autocommit(TRUE); //turn off transactions + commit queued queries
-//   } catch(Exception $e) {
-//     $mysqli->rollback(); //remove all queries from queue if error (undo)
-//     throw $e;
-//   }
   
 
 
