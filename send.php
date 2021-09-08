@@ -26,6 +26,7 @@ if( $_GET["name"] )
     $to = $_POST["to"];
     $amount = $_POST["amount"];
 
+
     check_name($from,$to,$amount);
    }
    
