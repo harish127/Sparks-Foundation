@@ -13,9 +13,9 @@ if(!$conn){
 function check_name($from,$to,$amount){
   
     // database parameters
-    const $user       = 'root';
-    const $password   = '';
-    const $dns ='mysql:host=localhost;dbname=bank';
+     $user       = 'root';
+     $password   = '';
+     $dns ='mysql:host=localhost;dbname=bank';
     // transaction process starts
     try {
         //PHP data object is created 
