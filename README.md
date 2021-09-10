@@ -52,4 +52,4 @@ http://localhost/Sparks-Foundation/index.php
 - Click on `Send` Button Corresponding Any row of table.
 - Now We are on Money Transfering Page. Now Enter a Valid Name in `To` textbox and also Enter Amount, Click on checkbox and finally Click on `Send` Button To Start Transfer.
 - Make sure the Amount you enter is not grator then current balance of the Person Selected, else it will pop Message.
-- If the Transaction is succesful Message will displayed and Changes made by above Transaction will be updated to customer table. 
+- If the Transaction is successful Message will displayed and Changes made by above Transaction will be updated to customer table. 
