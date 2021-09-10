@@ -31,7 +31,7 @@ function check_name($from,$to,$amount){
         $stmt->closeCursor();
 
         if ($availableAmount < $amount) {
-            throw new Exception('Insufficient amount to transfer');
+            throw new Exception('Insufficient amount to transfer!');
         }
         
         //Preparing SQL statements for transaction
@@ -60,19 +60,24 @@ function check_name($from,$to,$amount){
         
         //Everything is fine so Commit the changes
         if($db->commit()) 
-            echo "Transaction succesfull";
+            notification("success","Success","Transaction successfull.");
         else 
-            echo "Transection failed";
+            notification("danger","Error","Transaction failed!");
         
     } catch (PDOException $e) { //PDO related Exceptions are handle here
-        echo $e->getMessage();
+        notification("danger","Error",$e->getMessage()); 
     }catch(Exception $e){   //Custom Exceptions are handle here
-        echo $e->getMessage();
+        notification("danger","Error",$e->getMessage());
         $db->rollBack();   //Reverting changes if any
     }
 }
 
-  
-
+//Pops up notification about error or sucess messages  
+function notification($type,$strong,$message){
+    echo '<div class="alert alert-'.$type.' alert-dismissible fade show" role="alert">
+    <strong>'.$strong.'</strong> '.$message.'
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+}
 
 ?>
