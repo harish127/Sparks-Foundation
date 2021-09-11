@@ -31,7 +31,7 @@ if(!$result){
 if(!$result){
     echo "Sorry we failed to create table.<br>";
 }else{
-    echo "Table Created Successfully.<br>";
+    echo "Customer Table Created Successfully.<br>";
 }
 
 //Adding 10 dummey data into table customers
@@ -43,6 +43,17 @@ if(!$result){
     echo "Sorry we failed to add entries to table. <br>";
 }else{
     echo "Entries added to table Successfully.<br>";
+}
+
+//Creating transaction table customers
+$sql = "CREATE TABLE `bank`.`transaction` ( `Tran_ID` INT NOT NULL AUTO_INCREMENT , `From` VARCHAR(11) NOT NULL , `To` VARCHAR(11) NOT NULL , `Amount` DECIMAL NOT NULL , PRIMARY KEY (`Tran_ID`))";
+
+$result = mysqli_query($conn,$sql);
+
+if(!$result){
+   echo "Sorry we failed to create table.<br>";
+}else{
+   echo "Transaction Table Created Successfully.<br>";
 }
 
 ?>
