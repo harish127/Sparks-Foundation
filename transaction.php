@@ -14,7 +14,28 @@
   <!-- header with connection and sql code -->
   <?php require_once './include/header.php' ?>
 
-  
+  <!-- main container -->
+  <div class="container my-5">
+      <h2>Transaction details</h2>
+      <div class="container my-3">
+          <!-- table starts -->
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Transaction ID</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+              </table>
+              <!-- table ends -->
+              </div>
+      </div>
+  </div>
 
            <!-- footer  -->
   <?php require_once './include/footer.php' ?>  
