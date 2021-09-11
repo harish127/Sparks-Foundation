@@ -30,10 +30,11 @@ http://localhost/Sparks-Foundation/firsttime.php
 ```
 Conection was established Succesfully.
 DATABASE Created Successfully.
-Table Created Successfully.
+Customer Table Created Successfully.
 Entries added to table Successfully.
+Transaction Table Created Successfully.
 ```
-- This means that you have created a database name bank, a table name customers and finally added 10 entries to table.
+- This means that you have created a database name bank, a table name customers also added 10 entries to table and finally creating a table name Transaction.
 
 ## How To Run
 - After following steps above(First Time Installation).
