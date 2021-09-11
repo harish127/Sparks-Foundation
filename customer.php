@@ -32,7 +32,6 @@
                     <th scope="col">Name</th>
                     <th scope="col">E-Mail</th>
                     <th scope="col">Current Balance</th>
-                    <th scope="col">Transaction</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -47,13 +46,12 @@
                     <td>".$row['Name']."</td>
                     <td>".$row['Email']."</td>
                     <td>".$row['Amount']."</td>
-                    <td><a href='transection.php?name=".$row['Name']."'><button type='button' class='btn btn-success btn-sm'>View</button></a></td>
                     <td><a href='send.php?name=".$row['Name']."'><button type='button' class='btn btn-success btn-sm'>Send</button></a></td>
                   </tr>";
 
                     }
                   }else{
-                    echo "<h2>No data found in table</h2>";
+                    echo "<script>alert('No data found in table!');</script>";
                   }
                 ?>
                 </tbody>
