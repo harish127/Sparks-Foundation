@@ -7,12 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Money Bank</title>
+    <title>Showing Transactions details</title>
 </head>
 <body>
 
   <!-- header with connection and sql code -->
-  <?php require_once './include/header.php' ?>
+  <?php require_once './include/header.php'; 
+        require 'connection.php';
+
+ $sql = "SELECT * FROM `transaction`";
+
+ $result = mysqli_query($conn,$sql);
+ $num_of_entry = mysqli_num_rows($result); 
+  ?>
 
   <!-- main container -->
   <div class="container my-5">
@@ -28,7 +35,22 @@
                     <th scope="col">Amount</th>
                   </tr>
                 </thead>
+                 <!-- fetching data from table -->
+                <?php 
+                  if($num_of_entry>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<tr>
+                        <th scope='row'>".$row['Tran_ID']."</th>
+                        <td>".$row['From']."</td>
+                        <td>".$row['To']."</td>
+                        <td>".$row['Amount']."</td>
+                        </tr>";
 
+                    }
+                  }else{
+                    echo "<script>alert('No data found in table!');</script>";
+                  }
+                  ?>
                 <tbody>
                 </tbody>
               </table>
