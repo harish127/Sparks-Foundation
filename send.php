@@ -16,7 +16,7 @@
     require 'connection.php';
   $Name=NULL;
 
-if( $_GET["name"] ) 
+if(!empty($_GET["name"]) ) 
    $Name = $_GET["name"];
   $from='';
   $to='';
@@ -50,7 +50,7 @@ if( $_GET["name"] )
   </div>
   <div class="mb-3">
     <label for="Amount" class="form-label">Amount</label>
-    <input type="number" class="form-control" id="To" name="amount" required/>
+    <input type="number" class="form-control" id="Amt" name="amount" required/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <!-- <div class="mb-3 form-check">
