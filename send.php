@@ -40,24 +40,24 @@ if( $_GET["name"] )
   <form action="<?php $_PHP_SELF ?>" method="post" >
   <div class="mb-3">
     <label for="From" class="form-label">From</label>
-    <input type="text" class="form-control" id="From" name="from"  value='<?php echo $Name; ?>' />
+    <input type="text" class="form-control" id="From" name="from"  value='<?php echo $Name; ?>' required/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="To" class="form-label">To</label>
-    <input type="text" class="form-control" id="To" name="to" />
+    <input type="text" class="form-control" id="To" name="to" required/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="Amount" class="form-label">Amount</label>
-    <input type="number" class="form-control" id="To" name="amount"/>
+    <input type="number" class="form-control" id="To" name="amount" required/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="check">
-    <label class="form-check-label" for="exampleCheck1">Are you sure?</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Send</button>
+  <!-- <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="check" required/>
+    <label class="form-check-label" for="exampleCheck1" >Are you sure?</label>
+  </div> -->
+  <button type="submit" class="btn btn-primary" id="submit" >Send</button>
 </form>
 </div>
 
@@ -66,4 +66,5 @@ if( $_GET["name"] )
 </body>
         <!-- bootstrap js script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="./js/main.js"></script>
 </html>
